@@ -1,5 +1,5 @@
 {
-  "name": "challenge-url-shortener",
+  "name": "challenge-shopping-cart",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8080/",

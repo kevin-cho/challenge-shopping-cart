@@ -1,4 +1,4 @@
-# challenge-url-shortener
+# challenge-shopping-cart
 
 1. Install `go` and `node`
 2. Install packages by running:
