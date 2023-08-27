@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getCartIsOpen, getCartItems, getCartTotal } from '../store/cart/selectors';
-import { toggleOpen } from '../store/cart/slice';
 import Product from '../components/Product';
 import ProductGrid from '../components/ProductGrid';
+import { getCartIsOpen, getCartItems, getCartTotal } from '../store/cart/selectors';
+import { toggleOpen } from '../store/cart/slice';
 
 const Container = styled.div`
   display: ${props => props.$isOpen ? 'block' : 'none'};
@@ -46,8 +46,6 @@ const Cart = () => {
   const isOpen = useSelector(getCartIsOpen);
   const dispatch = useDispatch();
 
-
-  console.log({items})
   return (
     <Container $isOpen={isOpen}>
       <CloseButton onClick={() => dispatch(toggleOpen())}>ⓧ</CloseButton>

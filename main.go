@@ -18,6 +18,12 @@ var products = []Product{
         {ID: 1, Name: "Laptop", Price: 999.99, Category: "Electronics"},
         {ID: 2, Name: "Coffee Maker", Price: 49.99, Category: "Home Appliances"},
         {ID: 3, Name: "Book: The Great Gatsby", Price: 9.99, Category: "Books"},
+        {ID: 4, Name: "Book: The Great Gatsby", Price: 9.99, Category: "Books"},
+        {ID: 5, Name: "Book: The Great Gatsby", Price: 9.99, Category: "Books"},
+        {ID: 6, Name: "Book: The Great Gatsby", Price: 9.99, Category: "Books"},
+        {ID: 7, Name: "Book: The Great Gatsby", Price: 9.99, Category: "Books"},
+        {ID: 8, Name: "Book: The Great Gatsby", Price: 9.99, Category: "Books"},
+        {ID: 9, Name: "Book: The Great Gatsby", Price: 9.99, Category: "Books"},
         // ... add more products as needed
 }
 

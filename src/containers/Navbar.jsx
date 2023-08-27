@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getCartQuantity, getCartTotal } from '../store/cart/selectors';
+import { getCartQuantity } from '../store/cart/selectors';
 import { toggleOpen } from '../store/cart/slice';
 
 const Container = styled.nav`

@@ -19,6 +19,7 @@ const Flex = styled.div`
 
 const AddButton = styled.button`
   cursor: pointer;
+  font-size: 18px;
 `;
 
 const Product = ({ name, price, category, onAdd }) => (
