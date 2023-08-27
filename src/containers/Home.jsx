@@ -73,12 +73,17 @@ const products = [
 ]
 
 const Home = () => {
-  const [test, setTest] = useState('hello')
   const [options, setOptions] = useState([])
-  // const [selectedOptions, setSelectedOptions] = useState([])
   const [selectedProducts, setSelectedProducts] = useState(products);
 
-  // const handleSelect = selected => set
+  const handleSelect = selected => {
+    if (selected.length === 0) {
+      setSelectedProducts(products);
+    } else {
+      const selectedCategories = selected.map(option => option.value)
+      setSelectedProducts(products.filter(product => selectedCategories.includes(product.category)))
+    }
+  }
 
   useEffect(() => {
     const uniqueCategories = new Set(products.map(product => product.category))
@@ -93,15 +98,6 @@ const Home = () => {
   //   }
   //   getProducts();
   // }, [])
-
-  const handleSelect = selected => {
-    if (selected.length === 0) {
-      setSelectedProducts(products);
-    } else {
-      const selectedCategories = selected.map(option => option.value)
-      setSelectedProducts(products.filter(product => selectedCategories.includes(product.category)))
-    }
-  }
 
   return (
     <Container>
