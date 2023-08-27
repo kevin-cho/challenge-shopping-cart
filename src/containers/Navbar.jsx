@@ -1,6 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getCartQuantity } from '../store/cart/selectors';
+import { getCartQuantity, getCartTotal } from '../store/cart/selectors';
+import { toggleOpen } from '../store/cart/slice';
 
 const Container = styled.nav`
   height: 50px;
@@ -24,10 +25,11 @@ const CartButton = styled.button`
 
 const Navbar = () => {
   const cartQuantity = useSelector(getCartQuantity);
+  const dispatch = useDispatch();
 
   return (
     <Container>
-      <CartButton>({cartQuantity}) cart</CartButton>
+      <CartButton onClick={() => dispatch(toggleOpen())}>({cartQuantity}) cart</CartButton>
     </Container>
   )
 }

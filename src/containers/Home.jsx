@@ -4,13 +4,15 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select'
 import Product from '../components/Product';
 import { addItem } from '../store/cart/slice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCartIsOpen } from '../store/cart/selectors';
 
 const Container = styled.div`
   padding: 20px;
   padding-top: 60px;
   max-width: 1000px;
   margin: auto;
+  display: ${props => props.$isCartOpen ? 'none' : 'block'};
 `;
 
 const Products = styled.div`
@@ -108,6 +110,7 @@ const products = [
 const Home = () => {
   const [options, setOptions] = useState([])
   const [selectedProducts, setSelectedProducts] = useState(products);
+  const isCartOpen = useSelector(getCartIsOpen);
   const dispatch = useDispatch();
 
   const handleSelect = selected => {
@@ -140,7 +143,7 @@ const Home = () => {
   // }, [])
 
   return (
-    <Container>
+    <Container $isCartOpen={isCartOpen}>
       <StyledSelect options={options} isMulti onChange={handleSelect} autoFocus />
       <Products>
         {selectedProducts.map(product => (

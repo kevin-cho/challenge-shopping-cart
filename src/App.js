@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Cart from './containers/Cart';
 import Home from './containers/Home';
 import Navbar from './containers/Navbar';
 
@@ -10,6 +11,7 @@ function App() {
   return (
     <Container>
       <Navbar />
+      <Cart />
       <Home />
     </Container>
   );
