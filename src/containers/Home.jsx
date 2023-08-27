@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 
 const StyledSelect = styled(Select)`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 `;
 
 const products = [

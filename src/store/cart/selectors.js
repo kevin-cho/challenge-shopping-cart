@@ -10,7 +10,10 @@ export const getCartItems = createSelector(getItems, items => items);
 
 export const getCartTotal = createSelector(
   getItems,
-  items => items.reduce((acc, curr) => acc + curr.price, 0),
+  items => {
+    const total = items.reduce((acc, curr) => acc + curr.price, 0);
+    return Math.round(total * 100) / 100;
+  }
 )
 
 export const getCartIsOpen = createSelector(getIsOpen, isOpen => isOpen);
