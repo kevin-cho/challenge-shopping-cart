@@ -6,21 +6,31 @@ const Container = styled.div`
   border: 1px solid;
   border-radius: 8px;
   padding: 20px;
+
+  > *:not(:last-child) {
+    padding-bottom: 8px;
+  }
 `;
 
-const Label = styled.div`
+const Flex = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 8px;
+`;
+
+const AddButton = styled.button`
+  cursor: pointer;
 `;
 
 const Product = ({ name, price, category }) => (
   <Container>
-    <Label>
+    <Flex>
       <span>{name}</span>
       <span>{price}</span>
-    </Label>
-    <Chip>{category}</Chip>
+    </Flex>
+    <Flex>
+      <Chip>{category}</Chip>
+      <AddButton>+</AddButton>
+    </Flex>
   </Container>
 );
 

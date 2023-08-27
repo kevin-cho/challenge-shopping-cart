@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Select from 'react-select'
@@ -15,7 +15,6 @@ const Products = styled.div`
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr;
-  /* grid-auto-rows: auto; */
 
   @media (min-width: 630px) {
     grid-template-columns: 1fr 1fr;
@@ -23,10 +22,6 @@ const Products = styled.div`
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
-`;
-
-const Categories = styled.select`
-  margin-bottom: 20px;
 `;
 
 const StyledSelect = styled(Select)`
@@ -77,6 +72,7 @@ const Home = () => {
   const [selectedProducts, setSelectedProducts] = useState(products);
 
   const handleSelect = selected => {
+    // Filter the displayed products when a category is selected
     if (selected.length === 0) {
       setSelectedProducts(products);
     } else {
@@ -86,6 +82,7 @@ const Home = () => {
   }
 
   useEffect(() => {
+    // Get all unique product categories and format them for Select component
     const uniqueCategories = new Set(products.map(product => product.category))
     setOptions([...uniqueCategories].map(cat => ({ value: cat, label: cat })));
   }, [])
@@ -101,10 +98,6 @@ const Home = () => {
 
   return (
     <Container>
-      {/* <Categories>
-        <option>All</option>
-        {options.map(category => <option key={category}>{category}</option>)}
-      </Categories> */}
       <StyledSelect options={options} isMulti onChange={handleSelect} autoFocus />
       <Products>
         {selectedProducts.map(product => <Product key={product.id} {...product} />)}
