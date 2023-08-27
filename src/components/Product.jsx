@@ -21,7 +21,7 @@ const AddButton = styled.button`
   cursor: pointer;
 `;
 
-const Product = ({ name, price, category }) => (
+const Product = ({ name, price, category, onAdd }) => (
   <Container>
     <Flex>
       <span>{name}</span>
@@ -29,7 +29,7 @@ const Product = ({ name, price, category }) => (
     </Flex>
     <Flex>
       <Chip>{category}</Chip>
-      <AddButton>+</AddButton>
+      <AddButton onClick={onAdd}>+</AddButton>
     </Flex>
   </Container>
 );
@@ -38,6 +38,7 @@ Product.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
+  onAdd: PropTypes.func.isRequired,
 };
 
 export default Product;

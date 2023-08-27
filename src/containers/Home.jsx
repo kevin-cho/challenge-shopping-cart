@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Select from 'react-select'
 import Product from '../components/Product';
+import { addItem } from '../store/cart/slice';
+import { useDispatch } from 'react-redux';
 
 const Container = styled.div`
   padding: 20px;
@@ -70,6 +72,7 @@ const products = [
 const Home = () => {
   const [options, setOptions] = useState([])
   const [selectedProducts, setSelectedProducts] = useState(products);
+  const dispatch = useDispatch();
 
   const handleSelect = selected => {
     // Filter the displayed products when a category is selected
@@ -79,6 +82,10 @@ const Home = () => {
       const selectedCategories = selected.map(option => option.value)
       setSelectedProducts(products.filter(product => selectedCategories.includes(product.category)))
     }
+  }
+
+  const handleAdd = product => {
+    dispatch(addItem(product));
   }
 
   useEffect(() => {
@@ -100,7 +107,9 @@ const Home = () => {
     <Container>
       <StyledSelect options={options} isMulti onChange={handleSelect} autoFocus />
       <Products>
-        {selectedProducts.map(product => <Product key={product.id} {...product} />)}
+        {selectedProducts.map(product => (
+          <Product {...product} key={product.id} onAdd={() => handleAdd(product)} />
+        ))}
       </Products>
     </Container>
   );
