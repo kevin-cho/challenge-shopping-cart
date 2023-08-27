@@ -1,6 +1,7 @@
 import axios from 'axios';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import Select from 'react-select'
 import Product from '../components/Product';
 
 const Container = styled.div`
@@ -22,6 +23,14 @@ const Products = styled.div`
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
+`;
+
+const Categories = styled.select`
+  margin-bottom: 20px;
+`;
+
+const StyledSelect = styled(Select)`
+  margin-bottom: 20px;
 `;
 
 const products = [
@@ -65,6 +74,16 @@ const products = [
 
 const Home = () => {
   const [test, setTest] = useState('hello')
+  const [options, setOptions] = useState([])
+  // const [selectedOptions, setSelectedOptions] = useState([])
+  const [selectedProducts, setSelectedProducts] = useState(products);
+
+  // const handleSelect = selected => set
+
+  useEffect(() => {
+    const uniqueCategories = new Set(products.map(product => product.category))
+    setOptions([...uniqueCategories].map(cat => ({ value: cat, label: cat })));
+  }, [])
 
   // useEffect(() => {
   //   const getProducts = async () =>  {
@@ -75,10 +94,24 @@ const Home = () => {
   //   getProducts();
   // }, [])
 
+  const handleSelect = selected => {
+    if (selected.length === 0) {
+      setSelectedProducts(products);
+    } else {
+      const selectedCategories = selected.map(option => option.value)
+      setSelectedProducts(products.filter(product => selectedCategories.includes(product.category)))
+    }
+  }
+
   return (
     <Container>
+      {/* <Categories>
+        <option>All</option>
+        {options.map(category => <option key={category}>{category}</option>)}
+      </Categories> */}
+      <StyledSelect options={options} isMulti onChange={handleSelect} autoFocus />
       <Products>
-        {products.map(product => <Product key={product.id} {...product} />)}
+        {selectedProducts.map(product => <Product key={product.id} {...product} />)}
       </Products>
     </Container>
   );

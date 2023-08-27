@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Chip from './Chip';
 
 const Container = styled.div`
-  border: 1px solid white;
+  border: 1px solid;
   border-radius: 8px;
   padding: 20px;
 `;
