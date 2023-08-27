@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Home from './containers/Home';
+import Navbar from './containers/Navbar';
 
 const Container = styled.div`
   text-align: center;
@@ -8,6 +9,7 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
+      <Navbar />
       <Home />
     </Container>
   );

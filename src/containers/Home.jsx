@@ -67,6 +67,42 @@ const products = [
     "price": 9.99,
     "category": "Books"
   },
+  {
+    "id": 7,
+    "name": "Book: The Great Gatsby",
+    "price": 9.99,
+    "category": "Books"
+  },
+  {
+    "id": 8,
+    "name": "Book: The Great Gatsby",
+    "price": 9.99,
+    "category": "Books"
+  },
+  {
+    "id": 9,
+    "name": "Book: The Great Gatsby",
+    "price": 9.99,
+    "category": "Books"
+  },
+  {
+    "id": 10,
+    "name": "Book: The Great Gatsby",
+    "price": 9.99,
+    "category": "Books"
+  },
+  {
+    "id": 11,
+    "name": "Book: The Great Gatsby",
+    "price": 9.99,
+    "category": "Books"
+  },
+  {
+    "id": 12,
+    "name": "Book: The Great Gatsby",
+    "price": 9.99,
+    "category": "Books"
+  },
 ]
 
 const Home = () => {
