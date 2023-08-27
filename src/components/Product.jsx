@@ -27,18 +27,20 @@ const Product = ({ name, price, category, onAdd }) => (
       <span>{name}</span>
       <span>{price}</span>
     </Flex>
-    <Flex>
-      <Chip>{category}</Chip>
-      <AddButton onClick={onAdd}>+</AddButton>
-    </Flex>
+    {category && onAdd && (
+      <Flex>
+        <Chip>{category}</Chip>
+        <AddButton onClick={onAdd}>+</AddButton>
+      </Flex>
+    )}
   </Container>
 );
 
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  category: PropTypes.string.isRequired,
-  onAdd: PropTypes.func.isRequired,
+  category: PropTypes.string,
+  onAdd: PropTypes.func,
 };
 
 export default Product;

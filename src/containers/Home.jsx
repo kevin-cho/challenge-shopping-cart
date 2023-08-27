@@ -1,11 +1,12 @@
 // import axios from 'axios';
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import Select from 'react-select'
-import Product from '../components/Product';
-import { addItem } from '../store/cart/slice';
 import { useDispatch, useSelector } from 'react-redux';
+import Select from 'react-select'
+import styled from 'styled-components';
+import Product from '../components/Product';
+import ProductGrid from '../components/ProductGrid';
 import { getCartIsOpen } from '../store/cart/selectors';
+import { addItem } from '../store/cart/slice';
 
 const Container = styled.div`
   padding: 20px;
@@ -13,19 +14,6 @@ const Container = styled.div`
   max-width: 1000px;
   margin: auto;
   display: ${props => props.$isCartOpen ? 'none' : 'block'};
-`;
-
-const Products = styled.div`
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 1fr;
-
-  @media (min-width: 630px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 `;
 
 const StyledSelect = styled(Select)`
@@ -145,11 +133,11 @@ const Home = () => {
   return (
     <Container $isCartOpen={isCartOpen}>
       <StyledSelect options={options} isMulti onChange={handleSelect} autoFocus />
-      <Products>
+      <ProductGrid>
         {selectedProducts.map(product => (
           <Product {...product} key={product.id} onAdd={() => handleAdd(product)} />
         ))}
-      </Products>
+      </ProductGrid>
     </Container>
   );
 }
