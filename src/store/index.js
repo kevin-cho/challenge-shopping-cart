@@ -1,10 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import cart from './cart/slice';
 import products from './products/slice';
 
-export const store = configureStore({
-  reducer: {
-    cart,
-    products,
-  },
+const rootReducer = combineReducers({
+  cart,
+  products,
+})
+
+export const setupStore = preloadedState => configureStore({
+  reducer: rootReducer,
+  preloadedState,
 })
