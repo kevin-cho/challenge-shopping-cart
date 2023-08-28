@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import Product from '../components/Product';
-import ProductGrid from '../components/ProductGrid';
-import { getCartIsOpen, getCartItemsWithQuantity, getCartTotal } from '../store/cart/selectors';
-import { toggleOpen } from '../store/cart/slice';
+import Product from 'components/Product';
+import ProductGrid from 'components/ProductGrid';
+import { getCartIsOpen, getCartItemsWithQuantity, getCartTotal } from 'store/cart/selectors';
+import { toggleOpen } from 'store/cart/slice';
 
 const Container = styled.div`
   display: ${props => props.$isOpen ? 'block' : 'none'};

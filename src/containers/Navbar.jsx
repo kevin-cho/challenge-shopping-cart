@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getCartQuantity } from '../store/cart/selectors';
-import { toggleOpen } from '../store/cart/slice';
+import { getCartQuantity } from 'store/cart/selectors';
+import { toggleOpen } from 'store/cart/slice';
 
 const Container = styled.nav`
   height: 50px;

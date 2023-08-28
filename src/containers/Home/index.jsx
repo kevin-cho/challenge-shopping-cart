@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select'
 import axios from 'axios';
 import styled from 'styled-components';
-import Product from '../components/Product';
-import ProductGrid from '../components/ProductGrid';
-import { getCartIsOpen } from '../store/cart/selectors';
-import { addItem } from '../store/cart/slice';
-import { setProducts } from '../store/products/slice';
-import { getProducts } from '../store/products/selectors';
+import Product from 'components/Product';
+import ProductGrid from 'components/ProductGrid';
+import { getCartIsOpen } from 'store/cart/selectors';
+import { addItem } from 'store/cart/slice';
+import { setProducts } from 'store/products/slice';
+import { getProducts } from 'store/products/selectors';
 
 const Container = styled.div`
   padding: 20px;
