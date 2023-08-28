@@ -6,7 +6,23 @@ const getIsOpen = state => state.cart.isOpen;
 
 export const getCartQuantity = createSelector(getItems, items => items.length || 0);
 
-export const getCartItems = createSelector(getItems, items => items);
+/**
+ * Get list of unique cart items each with quantity
+ */
+export const getCartItemsWithQuantity = createSelector(getItems, items => {
+  const result = {}
+  items.forEach(item => {
+    if (result[item.id]) {
+      result[item.id].quantity++;
+    } else {
+      result[item.id] = {
+        ...item,
+        quantity: 1,
+      }
+    }
+  });
+  return Object.values(result);
+});
 
 export const getCartTotal = createSelector(
   getItems,
