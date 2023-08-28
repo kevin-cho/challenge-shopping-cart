@@ -27,3 +27,12 @@ test('renders with category chip and add button when props provided', () => {
   userEvent.click(addButton);
   expect(mockAdd).toHaveBeenCalledTimes(1);
 })
+
+test('renders without category chip and add button when props not provided', () => {
+  const mockAdd = jest.fn();
+
+  renderComponent();
+
+  expect(screen.queryByText('electronics')).not.toBeInTheDocument();
+  expect(mockAdd).toHaveBeenCalledTimes(0);
+})
