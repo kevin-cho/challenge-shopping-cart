@@ -49,6 +49,7 @@ const Cart = () => {
   return (
     <Container $isOpen={isOpen}>
       <CloseButton onClick={() => dispatch(toggleOpen())}>ⓧ</CloseButton>
+      {items.length === 0 && <span>The cart is empty</span>}
       <ProductGrid>
         {items.map(item => <Product {...item} key={item.id} />)}
       </ProductGrid>
