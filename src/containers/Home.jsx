@@ -25,9 +25,15 @@ const StyledSelect = styled(Select)`
   }
 `;
 
+const ErrorMessage = styled.p`
+  color: red;
+  margin-bottom: 20px;
+`;
+
 const Home = () => {
   const [options, setOptions] = useState([])
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [error, setError] = useState(null);
   const isCartOpen = useSelector(getCartIsOpen);
   const products = useSelector(getProducts);
   const dispatch = useDispatch();
@@ -58,11 +64,15 @@ const Home = () => {
 
   useEffect(() => {
     const getProducts = async () =>  {
-      const res = await axios.get('/api/products');
-      if (res.status === 200) {
-        dispatch(setProducts(res.data));
+      try {
+        const res = await axios.get('/api/products');
+        if (res.status === 200) {
+          dispatch(setProducts(res.data));
+        }
+      } catch (err) {
+        // Handle this based on how our API throws the error
+        setError(err.message);
       }
-      // TODO: handle error
     }
     getProducts();
   }, [dispatch])
@@ -70,6 +80,7 @@ const Home = () => {
   return (
     <Container $isCartOpen={isCartOpen}>
       <StyledSelect options={options} isMulti onChange={handleSelect} autoFocus />
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <ProductGrid>
         {selectedProducts.map(product => (
           <Product {...product} key={product.id} onAdd={() => handleAdd(product)} />
