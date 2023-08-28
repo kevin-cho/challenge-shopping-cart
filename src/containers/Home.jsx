@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select'
 import axios from 'axios';
@@ -38,7 +38,7 @@ const Home = () => {
   const products = useSelector(getProducts);
   const dispatch = useDispatch();
 
-  const handleSelect = selected => {
+  const handleSelect = useCallback(selected => {
     // Filter the displayed products when a category is selected
     if (selected.length === 0) {
       setSelectedProducts(products);
@@ -48,11 +48,11 @@ const Home = () => {
         products.filter(product => selectedCategories.includes(product.category))
       )
     }
-  }
+  }, [products]);
 
-  const handleAdd = product => {
+  const handleAdd = useCallback(product => {
     dispatch(addItem(product));
-  }
+  }, [dispatch]);
 
   useEffect(() => {
     setSelectedProducts(products);
