@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Chip from './Chip';
+import Chip from '../Chip';
 import { useMemo } from 'react';
 
 const Container = styled.div`
